@@ -12,7 +12,12 @@ class ShoppingList extends Component{
             ]
         }
     }
-    renderItems() {
+    addItem = (item) => {
+        this.setState(state => ({
+            items: [...state.items, item]
+        }))
+    }
+    renderItems = () => {
         return(
             <ul>
                 {this.state.items.map(item => (
@@ -28,7 +33,7 @@ class ShoppingList extends Component{
             <div>
                 <h1>Shopping List</h1>
                 {this.renderItems()}
-                <ShoppingListForm/>
+                <ShoppingListForm addItem={this.addItem}/>
             </div>
 
         )

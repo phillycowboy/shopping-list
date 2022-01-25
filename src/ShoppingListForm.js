@@ -10,9 +10,14 @@ class ShoppingListForm extends Component{
             [e.target.name]: e.target.value
         })
     }
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.props.addItem(this.state)
+        this.setState({name: "", qty: ""})
+    }
     render(){
         return(
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 <label htmlFor="name">Name: </label>
                 <input 
                     id="name"
@@ -27,6 +32,7 @@ class ShoppingListForm extends Component{
                     value={this.state.qty}
                     onChange={this.handleChange}
                 />
+                <button>Add Item!</button>
             </form>
         )
     }
